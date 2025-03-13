@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Updates & Downloads</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            padding: 30px;
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(45deg, #4caf50, #81c784);
+            color: #fff;
+            padding: 30px;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(30deg);
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(5px);
+        }
+        .section {
+            padding: 25px;
+            margin-bottom: 25px;
+            border-bottom: 2px dashed #e0e0e0;
+            transition: transform 0.3s;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+        }
+        h2 {
+            margin-bottom: 15px;
+            color: #4caf50;
+            position: relative;
+            display: inline-block;
+        }
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: #4caf50;
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            margin: 10px 10px 0 0;
+            background: #4caf50;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        .download-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+        .update-list li {
+            padding: 15px;
+            background: #f9f9f9;
+            margin-bottom: 15px;
+            border-left: 6px solid #4caf50;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .update-list li:hover {
+            background: #f0f0f0;
+            border-left-width: 8px;
+        }
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .feature-card {
+            padding: 25px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+        .feature-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        .feedback-form {
+            display: grid;
+            gap: 15px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 12px;
+        }
+        input, textarea {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: border-color 0.3s;
+        }
+        input:focus, textarea:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+        button {
+            padding: 12px;
+            background: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+        .stat-card {
+            padding: 20px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+        .stat-card h3 {
+            color: #4caf50;
+            margin-bottom: 10px;
+        }
+        .faq-item {
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .faq-question {
+            padding: 15px;
+            cursor: pointer;
+            background: #fff;
+        }
+        .faq-answer {
+            padding: 15px;
+            display: none;
+        }
+        .faq-question:hover {
+            background: #f0f0f0;
+        }
+        @media (max-width: 768px) {
+            header { padding: 20px; }
+            .container { padding: 15px; }
+            .section { padding: 15px; }
+            .download-btn { display: block; margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>App Updates & Downloads</h1>
+        <p>Discover the latest enhancements and get started today!</p>
+    </header>
+
+    <div class="container">
+        <!-- Latest Updates -->
+        <section class="section">
+            <h2>Latest Updates</h2>
+            <ul class="update-list">
+                <li><strong>Version 2.2.0</strong> - Added AI-powered analytics, enhanced security, and improved performance.</li>
+                <li><strong>Version 2.1.0</strong> - Improved performance, bug fixes, and added dark mode.</li>
+                <li><strong>Version 2.0.5</strong> - New UI design and multi-language support.</li>
+            </ul>
+        </section>
+
+        <!-- Download Section -->
+        <section class="section">
+            <h2>Download Now</h2>
+            <p>Get the latest version for your device:</p>
+            <a href="#" class="download-btn">Android (v2.2.0)</a>
+            <a href="#" class="download-btn">iOS (v2.2.0)</a>
+            <a href="#" class="download-btn">Windows (v2.2.0)</a>
+            <a href="#" class="download-btn">MacOS (v2.2.0)</a>
+        </section>
+
+        <!-- App Statistics -->
+        <section class="section">
+            <h2>App Statistics</h2>
+            <div class="stats-section">
+                <div class="stat-card">
+                    <h3>1.5M+</h3>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-card">
+                    <h3>4.8/5</h3>
+                    <p>User Rating</p>
+                </div>
+                <div class="stat-card">
+                    <h3>50M+</h3>
+                    <p>Downloads</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming Features -->
+        <section class="section">
+            <h2>Coming Soon</h2>
+            <ul class="features-list">
+                <li class="feature-card"><strong>Voice Commands:</strong> Control the app hands-free.</li>
+                <li class="feature-card"><strong>AR Integration:</strong> Experience features in augmented reality.</li>
+                <li class="feature-card"><strong>Cross-Platform Sync:</strong> Seamless data sync across devices.</li>
+                <li class="feature-card"><strong>Advanced Analytics:</strong> Detailed usage insights.</li>
+            </ul>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">How do I update the app?</div>
+                <div class="faq-answer">Click the download button for your platform above to get the latest version.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Is my data secure?</div>
+                <div class="faq-answer">Yes, we use end-to-end encryption and regular security updates.</div>
+            </div>
+        </section>
+
+        <!-- Feedback Form -->
+        <section class="section">
+            <h2>Your Feedback Matters</h2>
+            <form class="feedback-form" id="feedbackForm">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea rows="6" placeholder="Tell us what you think..." required></textarea>
+                <button type="submit">Send Feedback</button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        // Feedback Form Submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const form = this;
+            const submitBtn = form.querySelector('button');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                form.reset();
+                submitBtn.textContent = 'Send Feedback';
+                submitBtn.disabled = false;
+                alert('Thank you! Your feedback has been submitted successfully.');
+            }, 1000);
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // Scroll Animation
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.5s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
